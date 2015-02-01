@@ -15,6 +15,9 @@
 		CB9C37F01A7DA08200BC27E8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB9C37EF1A7DA08200BC27E8 /* Images.xcassets */; };
 		CB9C37F31A7DA08200BC27E8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB9C37F11A7DA08200BC27E8 /* LaunchScreen.xib */; };
 		CB9C37FF1A7DA08200BC27E8 /* GobbosTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CB9C37FE1A7DA08200BC27E8 /* GobbosTests.m */; };
+		CB9C380B1A7DC4B100BC27E8 /* BoardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB9C38091A7DC4B100BC27E8 /* BoardViewController.m */; };
+		CB9C380C1A7DC4B100BC27E8 /* BoardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB9C380A1A7DC4B100BC27E8 /* BoardViewController.xib */; };
+		CB9C380F1A7DC4FF00BC27E8 /* BoardView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB9C380E1A7DC4FF00BC27E8 /* BoardView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +45,11 @@
 		CB9C37F81A7DA08200BC27E8 /* GobbosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GobbosTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB9C37FD1A7DA08200BC27E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CB9C37FE1A7DA08200BC27E8 /* GobbosTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GobbosTests.m; sourceTree = "<group>"; };
+		CB9C38081A7DC4B100BC27E8 /* BoardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoardViewController.h; sourceTree = "<group>"; };
+		CB9C38091A7DC4B100BC27E8 /* BoardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoardViewController.m; sourceTree = "<group>"; };
+		CB9C380A1A7DC4B100BC27E8 /* BoardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BoardViewController.xib; sourceTree = "<group>"; };
+		CB9C380D1A7DC4FF00BC27E8 /* BoardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoardView.h; sourceTree = "<group>"; };
+		CB9C380E1A7DC4FF00BC27E8 /* BoardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoardView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +100,11 @@
 				CB9C37F11A7DA08200BC27E8 /* LaunchScreen.xib */,
 				CB9C37E61A7DA08200BC27E8 /* Gobbos.xcdatamodeld */,
 				CB9C37DF1A7DA08200BC27E8 /* Supporting Files */,
+				CB9C38081A7DC4B100BC27E8 /* BoardViewController.h */,
+				CB9C38091A7DC4B100BC27E8 /* BoardViewController.m */,
+				CB9C380A1A7DC4B100BC27E8 /* BoardViewController.xib */,
+				CB9C380D1A7DC4FF00BC27E8 /* BoardView.h */,
+				CB9C380E1A7DC4FF00BC27E8 /* BoardView.m */,
 			);
 			path = Gobbos;
 			sourceTree = "<group>";
@@ -205,6 +218,7 @@
 				CB9C37EE1A7DA08200BC27E8 /* Main.storyboard in Resources */,
 				CB9C37F31A7DA08200BC27E8 /* LaunchScreen.xib in Resources */,
 				CB9C37F01A7DA08200BC27E8 /* Images.xcassets in Resources */,
+				CB9C380C1A7DC4B100BC27E8 /* BoardViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -223,9 +237,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB9C37E81A7DA08200BC27E8 /* Gobbos.xcdatamodeld in Sources */,
+				CB9C380B1A7DC4B100BC27E8 /* BoardViewController.m in Sources */,
 				CB9C37E51A7DA08200BC27E8 /* AppDelegate.m in Sources */,
 				CB9C37EB1A7DA08200BC27E8 /* ViewController.m in Sources */,
 				CB9C37E21A7DA08200BC27E8 /* main.m in Sources */,
+				CB9C380F1A7DC4FF00BC27E8 /* BoardView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

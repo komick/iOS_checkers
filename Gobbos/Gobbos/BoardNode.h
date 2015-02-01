@@ -19,7 +19,9 @@
     Token *currentToken;
 }
 
-- (bool)isOccupied;
+- (bool)isOpenSquare;
+- (bool)isPlayer1Home;
+- (bool)isPlayer2Home;
 
 
 @end

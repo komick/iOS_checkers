@@ -7,8 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BoardView.h"
 #import "BoardNode.h"
 
-@interface Board : NSObject
+@interface Board : NSObject {
+    
+    NSDictionary *nodes;
+    NSDictionary *tokens;
+    
+    BoardView *boardview;
+}
 
 @end

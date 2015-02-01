@@ -10,4 +10,39 @@
 
 @implementation BoardNode
 
+
+- (id)initWithFrame:(CGRect)frame {
+    
+    view = [[UIView alloc]initWithFrame:frame];
+    view.backgroundColor = [UIColor brownColor];
+    
+    NSLog(@"BoardNode - initWithFrame()");
+    
+    return self;
+}
+
+
+- (UIView *)getView {
+    return view;
+}
+
+
+- (bool)isOpenSquare {
+    
+    return YES;
+}
+
+
+- (bool)isPlayer1Home {
+    
+    return YES;
+}
+
+
+- (bool)isPlayer2Home {
+    
+    return YES;
+}
+
+
 @end

@@ -15,9 +15,13 @@
 
 @implementation BoardViewController
 
+@synthesize boardView;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    board = [[Board alloc] initWithView:boardView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -34,5 +38,12 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+
+- (IBAction)startNewGame:(id)sender {
+    
+    NSLog(@"Start New Game");
+}
+
 
 @end

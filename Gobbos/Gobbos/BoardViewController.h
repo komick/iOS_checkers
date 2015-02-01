@@ -18,4 +18,8 @@
     Board *board;
 }
 
+@property (assign) IBOutlet BoardView *boardView;
+
+- (IBAction)startNewGame:(id)sender;
+
 @end

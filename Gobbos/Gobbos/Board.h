@@ -15,10 +15,10 @@
     NSDictionary *nodes;
     NSDictionary *tokens;
     
-    BoardView *boardview;
+    BoardView *boardView;
 }
 
-- (id)init;
+- (id)initWithView:(BoardView *)v_board;
 - (void)setupBoard;
 
 @end

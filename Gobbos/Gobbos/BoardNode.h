@@ -17,8 +17,12 @@
     BoardNode *p2b;
     
     Token *currentToken;
+    
+    UIView *view;
 }
 
+- (id)initWithFrame:(CGRect)frame;
+- (UIView*)getView;
 - (bool)isOpenSquare;
 - (bool)isPlayer1Home;
 - (bool)isPlayer2Home;

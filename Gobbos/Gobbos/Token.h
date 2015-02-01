@@ -7,7 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TokenView.h"
 
-@interface Token : NSObject
+@interface Token : NSObject {
+    
+    TokenView *view;
+    
+}
 
 @end

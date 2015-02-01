@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Board.h"
+#import "BoardView.h"
+#import "BoardNode.h"
+#import "Token.h"
+#import "TokenView.h"
 
-@interface BoardViewController : UIViewController
+@interface BoardViewController : UIViewController {
+    
+    Board *board;
+}
 
 @end

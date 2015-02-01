@@ -18,4 +18,33 @@
 }
 */
 
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    /*UITouch *touch = [[event allTouches] anyObject];
+    CGPoint touchLocation = [touch locationInView:self->view];
+    if (CGRectContainsPoint(self.window.frame, touchLocation)) {
+        dragging = YES;
+        oldY = touchLocation.y;
+    }*/
+    NSLog(@"TokenView - touchesBegan()");
+}
+
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+    /*UITouch *touch = [[event allTouches] anyObject];
+    CGPoint touchLocation = [touch locationInView:self->view];
+    if (dragging) {
+        CGRect frame = self.window.frame;
+        frame.origin.y =  self.window.frame.origin.y + touchLocation.y - oldY;
+        self.window.frame = frame;
+    }*/
+    NSLog(@"TokenView - touchesMoved()");
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    //dragging = NO;
+    NSLog(@"TokenView - touchesEnded()");
+}
+
+
 @end

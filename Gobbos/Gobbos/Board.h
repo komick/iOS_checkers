@@ -18,4 +18,7 @@
     BoardView *boardview;
 }
 
+- (id)init;
+- (void)setupBoard;
+
 @end

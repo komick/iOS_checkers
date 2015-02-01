@@ -1,14 +1,14 @@
 //
-//  Board.h
+//  Token.m
 //  Gobbos
 //
 //  Created by Komick on 2015-01-31.
 //  Copyright (c) 2015 komick. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import "BoardNode.h"
+#import "Token.h"
+#import "TokenView.h"
 
-@interface Board : NSObject
+@implementation Token
 
 @end

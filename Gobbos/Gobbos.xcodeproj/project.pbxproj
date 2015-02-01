@@ -21,6 +21,7 @@
 		CB9C38121A7DC5E700BC27E8 /* Board.m in Sources */ = {isa = PBXBuildFile; fileRef = CB9C38111A7DC5E700BC27E8 /* Board.m */; };
 		CB9C38151A7DC61300BC27E8 /* TokenView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB9C38141A7DC61300BC27E8 /* TokenView.m */; };
 		CB9C38181A7DC65000BC27E8 /* BoardNode.m in Sources */ = {isa = PBXBuildFile; fileRef = CB9C38171A7DC65000BC27E8 /* BoardNode.m */; };
+		CB9C381B1A7DC9A900BC27E8 /* Token.m in Sources */ = {isa = PBXBuildFile; fileRef = CB9C381A1A7DC9A900BC27E8 /* Token.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,8 @@
 		CB9C38141A7DC61300BC27E8 /* TokenView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenView.m; sourceTree = "<group>"; };
 		CB9C38161A7DC65000BC27E8 /* BoardNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoardNode.h; sourceTree = "<group>"; };
 		CB9C38171A7DC65000BC27E8 /* BoardNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoardNode.m; sourceTree = "<group>"; };
+		CB9C38191A7DC9A900BC27E8 /* Token.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Token.h; sourceTree = "<group>"; };
+		CB9C381A1A7DC9A900BC27E8 /* Token.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Token.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +121,8 @@
 				CB9C38111A7DC5E700BC27E8 /* Board.m */,
 				CB9C38161A7DC65000BC27E8 /* BoardNode.h */,
 				CB9C38171A7DC65000BC27E8 /* BoardNode.m */,
+				CB9C38191A7DC9A900BC27E8 /* Token.h */,
+				CB9C381A1A7DC9A900BC27E8 /* Token.m */,
 				CB9C38131A7DC61300BC27E8 /* TokenView.h */,
 				CB9C38141A7DC61300BC27E8 /* TokenView.m */,
 			);
@@ -252,6 +257,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB9C38121A7DC5E700BC27E8 /* Board.m in Sources */,
+				CB9C381B1A7DC9A900BC27E8 /* Token.m in Sources */,
 				CB9C37E81A7DA08200BC27E8 /* Gobbos.xcdatamodeld in Sources */,
 				CB9C38151A7DC61300BC27E8 /* TokenView.m in Sources */,
 				CB9C380B1A7DC4B100BC27E8 /* BoardViewController.m in Sources */,

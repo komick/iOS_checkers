@@ -7,7 +7,19 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Token.h"
 
-@interface BoardNode : NSObject
+@interface BoardNode : NSObject {
+    
+    BoardNode *p1a;
+    BoardNode *p1b;
+    BoardNode *p2a;
+    BoardNode *p2b;
+    
+    Token *currentToken;
+}
+
+- (bool)isOccupied;
+
 
 @end

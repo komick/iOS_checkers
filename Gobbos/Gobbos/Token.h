@@ -1,5 +1,5 @@
 //
-//  Board.h
+//  Token.h
 //  Gobbos
 //
 //  Created by Komick on 2015-01-31.
@@ -7,8 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "BoardNode.h"
 
-@interface Board : NSObject
+@interface Token : NSObject
 
 @end

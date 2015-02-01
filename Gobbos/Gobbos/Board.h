@@ -19,6 +19,9 @@
 }
 
 - (id)initWithView:(BoardView *)v_board;
+- (void)initBoardNodes;
+- (void)linkBoardNodes;
+- (void)initTokens;
 - (void)setupBoard;
 
 @end

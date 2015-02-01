@@ -23,6 +23,14 @@
 
 - (id)initWithFrame:(CGRect)frame;
 - (UIView*)getView;
+- (void)setP1A:(BoardNode *)node;
+- (void)SetP1B:(BoardNode *)node;
+- (void)SetP2A:(BoardNode *)node;
+- (void)SetP2B:(BoardNode *)node;
+- (BoardNode *)getP1A;
+- (BoardNode *)getP1B;
+- (BoardNode *)getP2A;
+- (BoardNode *)getP2B;
 - (bool)isOpenSquare;
 - (bool)isPlayer1Home;
 - (bool)isPlayer2Home;

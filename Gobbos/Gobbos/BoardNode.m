@@ -16,14 +16,59 @@
     view = [[UIView alloc]initWithFrame:frame];
     view.backgroundColor = [UIColor brownColor];
     
-    NSLog(@"BoardNode - initWithFrame()");
-    
     return self;
 }
 
 
 - (UIView *)getView {
     return view;
+}
+
+
+- (void)setP1A:(BoardNode *)node {
+    p1a = node;
+}
+
+
+- (void)SetP1B:(BoardNode *)node {
+    
+    p1b = node;
+}
+
+
+- (void)SetP2A:(BoardNode *)node {
+    
+    p2a = node;
+}
+
+
+- (void)SetP2B:(BoardNode *)node {
+    
+    p2b = node;
+}
+
+
+- (BoardNode *)getP1A {
+    
+    return p1a;
+}
+
+
+- (BoardNode *)getP1B {
+    
+    return p1b;
+}
+
+
+- (BoardNode *)getP2A {
+    
+    return p2a;
+}
+
+
+- (BoardNode *)getP2B {
+    
+    return p2b;
 }
 
 

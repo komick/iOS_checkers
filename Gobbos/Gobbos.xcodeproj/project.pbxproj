@@ -18,6 +18,9 @@
 		CB9C380B1A7DC4B100BC27E8 /* BoardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB9C38091A7DC4B100BC27E8 /* BoardViewController.m */; };
 		CB9C380C1A7DC4B100BC27E8 /* BoardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB9C380A1A7DC4B100BC27E8 /* BoardViewController.xib */; };
 		CB9C380F1A7DC4FF00BC27E8 /* BoardView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB9C380E1A7DC4FF00BC27E8 /* BoardView.m */; };
+		CB9C38121A7DC5E700BC27E8 /* Board.m in Sources */ = {isa = PBXBuildFile; fileRef = CB9C38111A7DC5E700BC27E8 /* Board.m */; };
+		CB9C38151A7DC61300BC27E8 /* TokenView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB9C38141A7DC61300BC27E8 /* TokenView.m */; };
+		CB9C38181A7DC65000BC27E8 /* BoardNode.m in Sources */ = {isa = PBXBuildFile; fileRef = CB9C38171A7DC65000BC27E8 /* BoardNode.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +53,12 @@
 		CB9C380A1A7DC4B100BC27E8 /* BoardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BoardViewController.xib; sourceTree = "<group>"; };
 		CB9C380D1A7DC4FF00BC27E8 /* BoardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoardView.h; sourceTree = "<group>"; };
 		CB9C380E1A7DC4FF00BC27E8 /* BoardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoardView.m; sourceTree = "<group>"; };
+		CB9C38101A7DC5E700BC27E8 /* Board.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Board.h; sourceTree = "<group>"; };
+		CB9C38111A7DC5E700BC27E8 /* Board.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Board.m; sourceTree = "<group>"; };
+		CB9C38131A7DC61300BC27E8 /* TokenView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenView.h; sourceTree = "<group>"; };
+		CB9C38141A7DC61300BC27E8 /* TokenView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenView.m; sourceTree = "<group>"; };
+		CB9C38161A7DC65000BC27E8 /* BoardNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoardNode.h; sourceTree = "<group>"; };
+		CB9C38171A7DC65000BC27E8 /* BoardNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoardNode.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +114,12 @@
 				CB9C380A1A7DC4B100BC27E8 /* BoardViewController.xib */,
 				CB9C380D1A7DC4FF00BC27E8 /* BoardView.h */,
 				CB9C380E1A7DC4FF00BC27E8 /* BoardView.m */,
+				CB9C38101A7DC5E700BC27E8 /* Board.h */,
+				CB9C38111A7DC5E700BC27E8 /* Board.m */,
+				CB9C38161A7DC65000BC27E8 /* BoardNode.h */,
+				CB9C38171A7DC65000BC27E8 /* BoardNode.m */,
+				CB9C38131A7DC61300BC27E8 /* TokenView.h */,
+				CB9C38141A7DC61300BC27E8 /* TokenView.m */,
 			);
 			path = Gobbos;
 			sourceTree = "<group>";
@@ -236,9 +251,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB9C38121A7DC5E700BC27E8 /* Board.m in Sources */,
 				CB9C37E81A7DA08200BC27E8 /* Gobbos.xcdatamodeld in Sources */,
+				CB9C38151A7DC61300BC27E8 /* TokenView.m in Sources */,
 				CB9C380B1A7DC4B100BC27E8 /* BoardViewController.m in Sources */,
 				CB9C37E51A7DA08200BC27E8 /* AppDelegate.m in Sources */,
+				CB9C38181A7DC65000BC27E8 /* BoardNode.m in Sources */,
 				CB9C37EB1A7DA08200BC27E8 /* ViewController.m in Sources */,
 				CB9C37E21A7DA08200BC27E8 /* main.m in Sources */,
 				CB9C380F1A7DC4FF00BC27E8 /* BoardView.m in Sources */,

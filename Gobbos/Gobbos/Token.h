@@ -11,8 +11,13 @@
 
 @interface Token : NSObject {
     
+    int owningPlayer;
+    
     TokenView *view;
     
 }
+
+- (id)initWithFrame:(CGRect)frame forPlayer:(int)player;
+- (TokenView *)getView;
 
 @end

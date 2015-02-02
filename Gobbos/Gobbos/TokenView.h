@@ -10,4 +10,6 @@
 
 @interface TokenView : UIView
 
+- (id)initWithFrame:(CGRect)frame;
+
 @end

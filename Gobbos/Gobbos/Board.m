@@ -96,24 +96,54 @@
             }
             
             // Set P1A
-            if (col-1 > 0 && row+1 <= 8) {
-                [tmpNode setP1A:[nodes objectForKey:[NSString stringWithFormat:@"%@%d",[rowNames objectAtIndex:row-1], col+1]]];
-                NSLog(@"%@%d:P1A->%@%d",[rowNames objectAtIndex:row], col, [rowNames objectAtIndex:row-1], col+1);
+            if (row%2 == 0) {
+                if (row+1 <= 8) {
+                    [tmpNode setP1A:[nodes objectForKey:[NSString stringWithFormat:@"%@%d",[rowNames objectAtIndex:row+1], col]]];
+                    NSLog(@"%@%d:P1A->%@%d",[rowNames objectAtIndex:row], col, [rowNames objectAtIndex:row+1], col);
+                }
+            }
+            else {
+                if (col-1 > 0 && row+1 <= 8) {
+                    [tmpNode setP1A:[nodes objectForKey:[NSString stringWithFormat:@"%@%d",[rowNames objectAtIndex:row+1], col-1]]];
+                    NSLog(@"%@%d:P1A->%@%d",[rowNames objectAtIndex:row], col, [rowNames objectAtIndex:row+1], col-1);
+                }
             }
             
             // Set P1B
-            if (col+1 <= 4 && row+1 <= 8) {
-                [tmpNode setP1B:[nodes objectForKey:[NSString stringWithFormat:@"%@%d",[rowNames objectAtIndex:row+1], col+1]]];
-                NSLog(@"%@%d:P1B->%@%d",[rowNames objectAtIndex:row], col, [rowNames objectAtIndex:row+1], col+1);
+            if (row%2 != 0) {
+                if (row+1 <= 8) {
+                    [tmpNode setP1B:[nodes objectForKey:[NSString stringWithFormat:@"%@%d",[rowNames objectAtIndex:row+1], col]]];
+                    NSLog(@"%@%d:P1B->%@%d",[rowNames objectAtIndex:row], col, [rowNames objectAtIndex:row+1], col);
+                }
+            }
+            else {
+                if (col+1 <= 4 && row+1 <= 8) {
+                    [tmpNode setP1B:[nodes objectForKey:[NSString stringWithFormat:@"%@%d",[rowNames objectAtIndex:row+1], col+1]]];
+                    NSLog(@"%@%d:P1B->%@%d",[rowNames objectAtIndex:row], col, [rowNames objectAtIndex:row+1], col+1);
+                }
             }
             
-            //[nodes setValue:tmpNode forKey:[NSString stringWithFormat:@"%@%d",[rowNames objectAtIndex:row], col]];
         }
     }
 }
 
 
 - (void)initTokens {
+    
+    // Create Player1's tokens
+    NSArray *player1Nodes = [[NSArray alloc] initWithObjects:@"A1", @"A2", @"A3", @"A4", @"B1", @"B2", @"B3", @"B4", @"C1", @"C2", @"C3", @"C4", nil];
+    
+    Token *tmpToken = [[Token alloc] initWithFrame:[[nodes objectForKey:@"A1"] getView].frame forPlayer:1];
+    
+    [boardView addSubview:[tmpToken getView]];
+    
+    Token *tmpToken2 = [[Token alloc] initWithFrame:[[nodes objectForKey:@"B2"] getView].frame forPlayer:2];
+    
+    [boardView addSubview:[tmpToken2 getView]];
+    
+    
+    // Create Player2's tokens
+    NSArray *player2Nodes = [[NSArray alloc] initWithObjects:@"F1", @"F2", @"F3", @"F4", @"G1", @"G2", @"G3", @"G4", @"H1", @"H2", @"H3", @"H4", nil];
     
     
 }

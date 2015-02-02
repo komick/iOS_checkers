@@ -72,9 +72,15 @@
 }
 
 
+- (void)setCurrentToken:(Token *)token {
+
+    currentToken = token;
+}
+
+
 - (bool)isOpenSquare {
     
-    return YES;
+    return currentToken == nil;
 }
 
 

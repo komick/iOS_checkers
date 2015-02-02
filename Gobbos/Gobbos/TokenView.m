@@ -26,6 +26,9 @@
     //    dragging = YES;
     //    oldY = touchLocation.y;
     //}
+    
+    oldFrame = self.frame;
+    
     NSLog(@"TokenView - touchesBegan()");
 }
 
@@ -56,6 +59,30 @@
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     //dragging = NO;
+    
+    bool safe = NO;
+    
+    CGPoint location = [[touches anyObject] locationInView:self];
+    CGRect fingerRect = CGRectMake(location.x-5, location.y-5, 10, 10);
+    
+    for(UIView *view in self.superview.subviews){
+        if (view != self) {
+            CGRect subviewFrame = view.frame;
+            NSLog(@"Subviews: %lu", (unsigned long)[self.superview.subviews count]);
+            
+            if(CGRectIntersectsRect(self.frame, subviewFrame)){
+                //we found the finally touched view
+                NSLog(@"Yeah !, i found it %@",view);
+                safe = YES;
+            }
+        }
+    }
+    
+    if (!safe) {
+        [self setFrame:oldFrame];
+        NSLog(@"Snapback!");
+    }
+    
     NSLog(@"TokenView - touchesEnded()");
 }
 

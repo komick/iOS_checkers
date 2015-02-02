@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TokenView : UIView
+@interface TokenView : UIView {
+    
+    CGRect oldFrame;
+}
 
 - (id)initWithFrame:(CGRect)frame;
 

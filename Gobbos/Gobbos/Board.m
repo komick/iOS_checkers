@@ -134,11 +134,11 @@
     NSArray *player1Nodes = [[NSArray alloc] initWithObjects:@"A1", @"A2", @"A3", @"A4", @"B1", @"B2", @"B3", @"B4", @"C1", @"C2", @"C3", @"C4", nil];
     
     Token *tmpToken = [[Token alloc] initWithFrame:[[nodes objectForKey:@"A1"] getView].frame forPlayer:1];
-    
+    [[nodes objectForKey:@"A1"] setCurrentToken:tmpToken];
     [boardView addSubview:[tmpToken getView]];
     
     Token *tmpToken2 = [[Token alloc] initWithFrame:[[nodes objectForKey:@"B2"] getView].frame forPlayer:2];
-    
+    [[nodes objectForKey:@"B2"] setCurrentToken:tmpToken];
     [boardView addSubview:[tmpToken2 getView]];
     
     

@@ -30,19 +30,19 @@
 }
 
 
-- (void)SetP1B:(BoardNode *)node {
+- (void)setP1B:(BoardNode *)node {
     
     p1b = node;
 }
 
 
-- (void)SetP2A:(BoardNode *)node {
+- (void)setP2A:(BoardNode *)node {
     
     p2a = node;
 }
 
 
-- (void)SetP2B:(BoardNode *)node {
+- (void)setP2B:(BoardNode *)node {
     
     p2b = node;
 }

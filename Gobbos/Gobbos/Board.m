@@ -57,21 +57,54 @@
 
 - (void)linkBoardNodes {
     
+    BoardNode *tmpNode;
+    
     NSArray *rowNames = [[NSArray alloc] initWithObjects:@"spacer", @"A", @"B", @"C", @"D", @"E", @"F", @"G", @"H", nil];
     
     // Iterate through board nodes, link to P1A, P1B, P2A and P2B values for each
     for (int row = 1; row <= 8; row++) {
         for (int col = 1; col <= 4; col++) {
-            if (row == 1) {
-                // Don't set p1a or p1b for node
-                
-            }
-            else if (row == 8) {
-                // Don't set p2a or p2b for node
-                
+            
+            tmpNode = [nodes objectForKey:[NSString stringWithFormat:@"%@%d",[rowNames objectAtIndex:row], col]];
+            
+            // Set P2A
+            if (row%2 == 0) {
+                if (row-1 > 0) {
+                    [tmpNode setP2A:[nodes objectForKey:[NSString stringWithFormat:@"%@%d",[rowNames objectAtIndex:row-1], col]]];
+                    NSLog(@"%@%d:P2A->%@%d",[rowNames objectAtIndex:row], col, [rowNames objectAtIndex:row-1], col);
+                }
             }
             else {
-                
+                if (col-1 > 0 && row-1 > 0) {
+                    [tmpNode setP2A:[nodes objectForKey:[NSString stringWithFormat:@"%@%d",[rowNames objectAtIndex:row-1], col-1]]];
+                    NSLog(@"%@%d:P2A->%@%d",[rowNames objectAtIndex:row], col, [rowNames objectAtIndex:row-1], col-1);
+                }
+            }
+            
+            // Set P2B
+            if (row%2 != 0) {
+                if (row-1 > 0) {
+                    [tmpNode setP2B:[nodes objectForKey:[NSString stringWithFormat:@"%@%d",[rowNames objectAtIndex:row-1], col]]];
+                    NSLog(@"%@%d:P2B->%@%d",[rowNames objectAtIndex:row], col, [rowNames objectAtIndex:row-1], col);
+                }
+            }
+            else {
+                if (col+1 <= 4 && row-1 > 0) {
+                    [tmpNode setP2B:[nodes objectForKey:[NSString stringWithFormat:@"%@%d",[rowNames objectAtIndex:row-1], col+1]]];
+                    NSLog(@"%@%d:P2B->%@%d",[rowNames objectAtIndex:row], col, [rowNames objectAtIndex:row-1], col+1);
+                }
+            }
+            
+            // Set P1A
+            if (col-1 > 0 && row+1 <= 8) {
+                [tmpNode setP1A:[nodes objectForKey:[NSString stringWithFormat:@"%@%d",[rowNames objectAtIndex:row-1], col+1]]];
+                NSLog(@"%@%d:P1A->%@%d",[rowNames objectAtIndex:row], col, [rowNames objectAtIndex:row-1], col+1);
+            }
+            
+            // Set P1B
+            if (col+1 <= 4 && row+1 <= 8) {
+                [tmpNode setP1B:[nodes objectForKey:[NSString stringWithFormat:@"%@%d",[rowNames objectAtIndex:row+1], col+1]]];
+                NSLog(@"%@%d:P1B->%@%d",[rowNames objectAtIndex:row], col, [rowNames objectAtIndex:row+1], col+1);
             }
             
             //[nodes setValue:tmpNode forKey:[NSString stringWithFormat:@"%@%d",[rowNames objectAtIndex:row], col]];

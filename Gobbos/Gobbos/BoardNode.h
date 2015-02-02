@@ -24,9 +24,9 @@
 - (id)initWithFrame:(CGRect)frame;
 - (UIView*)getView;
 - (void)setP1A:(BoardNode *)node;
-- (void)SetP1B:(BoardNode *)node;
-- (void)SetP2A:(BoardNode *)node;
-- (void)SetP2B:(BoardNode *)node;
+- (void)setP1B:(BoardNode *)node;
+- (void)setP2A:(BoardNode *)node;
+- (void)setP2B:(BoardNode *)node;
 - (BoardNode *)getP1A;
 - (BoardNode *)getP1B;
 - (BoardNode *)getP2A;

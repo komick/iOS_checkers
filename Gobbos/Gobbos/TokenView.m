@@ -19,29 +19,50 @@
 */
 
 
+- (id)initWithFrame:(CGRect)frame {
+    
+    self = [super initWithFrame:frame];
+    if (self) {
+        nc = [NSNotificationCenter defaultCenter];
+        data = [[NSMutableDictionary alloc] init];
+    }
+    
+    return self;
+}
+
+
+- (void)snapback {
+    
+    [self setFrame:oldFrame];
+    NSLog(@"Snapback!");
+}
+
+
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    //UITouch *touch = [[event allTouches] anyObject];
-    //CGPoint touchLocation = [touch locationInView:self->view];
-    //if (CGRectContainsPoint(self.window.frame, touchLocation)) {
-    //    dragging = YES;
-    //    oldY = touchLocation.y;
-    //}
     
     oldFrame = self.frame;
+    
+    CGPoint location = [[touches anyObject] locationInView:self];
+    CGRect fingerRect = CGRectMake(location.x-5, location.y-5, 10, 10);
+    
+    for(UIView *view in self.superview.subviews){
+        if (view != self) {
+            CGRect subviewFrame = view.frame;
+            //NSLog(@"Subviews: %lu", (unsigned long)[self.superview.subviews count]);
+            
+            if(CGRectIntersectsRect(self.frame, subviewFrame)){
+                //we found the finally touched view
+                NSLog(@"Yeah !, i found it %@",view);
+                [data setValue:view forKey:@"originalBoardNodeView"];
+            }
+        }
+    }
     
     NSLog(@"TokenView - touchesBegan()");
 }
 
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-    /*UITouch *touch = [touches anyObject];
-    CGPoint touchLocation = [touch locationInView:self];
-    if (touch.view == self) {
-        self.center =  touchLocation;
-        //CGRect newFrame = CGRectMake(touchLocation.x, touchLocation.y, 40.0f, 40.0f);
-        //self.frame = newFrame;
-    }
-    */
     
     UITouch *aTouch = [touches anyObject];
     CGPoint loc = [aTouch locationInView:self];
@@ -58,8 +79,7 @@
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    //dragging = NO;
-    
+
     bool safe = NO;
     
     CGPoint location = [[touches anyObject] locationInView:self];
@@ -68,19 +88,23 @@
     for(UIView *view in self.superview.subviews){
         if (view != self) {
             CGRect subviewFrame = view.frame;
-            NSLog(@"Subviews: %lu", (unsigned long)[self.superview.subviews count]);
             
             if(CGRectIntersectsRect(self.frame, subviewFrame)){
                 //we found the finally touched view
                 NSLog(@"Yeah !, i found it %@",view);
+                [data setValue:view forKey:@"targetBoardNodeView"];
                 safe = YES;
             }
         }
     }
     
     if (!safe) {
-        [self setFrame:oldFrame];
-        NSLog(@"Snapback!");
+        [self snapback];
+    }
+    else {
+        
+        [data setValue:self forKey:@"tokenView"];
+        [nc postNotificationName:@"validateTokenMove" object:data];
     }
     
     NSLog(@"TokenView - touchesEnded()");

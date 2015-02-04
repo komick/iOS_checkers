@@ -13,7 +13,8 @@
 @interface Board : NSObject {
     
     NSDictionary *nodes;
-    NSDictionary *tokens;
+    NSMutableArray *player1Tokens;
+    NSMutableArray *player2Tokens;
     
     BoardView *boardView;
 }

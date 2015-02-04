@@ -21,7 +21,8 @@
     [self initBoardNodes];
     
     // Create game pieces
-    tokens = [[NSMutableDictionary alloc] init];
+    player1Tokens = [[NSMutableArray alloc] init];
+    player2Tokens = [[NSMutableArray alloc] init];
     [self initTokens];
     
     // Setup board for first game
@@ -46,6 +47,7 @@
                 tmpFrame = CGRectMake(((col-1)*40.0f)+((col-1)*40), (row-1)*40.0f, 40.0f, 40.0f);
             }
             BoardNode *tmpNode = [[BoardNode alloc] initWithFrame:tmpFrame];
+            [[tmpNode getView] setNodeName:[NSString stringWithFormat:@"%@%d",[rowNames objectAtIndex:row], col]];
             [nodes setValue:tmpNode forKey:[NSString stringWithFormat:@"%@%d",[rowNames objectAtIndex:row], col]];
             [boardView addSubview:[tmpNode getView]];
         }
@@ -130,22 +132,31 @@
 
 - (void)initTokens {
     
+    Token *tmpToken;
+    
     // Create Player1's tokens
     NSArray *player1Nodes = [[NSArray alloc] initWithObjects:@"A1", @"A2", @"A3", @"A4", @"B1", @"B2", @"B3", @"B4", @"C1", @"C2", @"C3", @"C4", nil];
     
-    Token *tmpToken = [[Token alloc] initWithFrame:[[nodes objectForKey:@"A1"] getView].frame forPlayer:1];
-    [[nodes objectForKey:@"A1"] setCurrentToken:tmpToken];
-    [boardView addSubview:[tmpToken getView]];
-    
-    Token *tmpToken2 = [[Token alloc] initWithFrame:[[nodes objectForKey:@"B2"] getView].frame forPlayer:2];
-    [[nodes objectForKey:@"B2"] setCurrentToken:tmpToken];
-    [boardView addSubview:[tmpToken2 getView]];
-    
+    for(NSString *item in player1Nodes) {
+        tmpToken = [[Token alloc] initWithFrame:[[nodes objectForKey:item] getView].frame forPlayer:1];
+        [tmpToken setCurrentBoardNode:item];
+        [[nodes objectForKey:item] setCurrentToken:tmpToken];
+        [boardView addSubview:[tmpToken getView]];
+        
+        [player1Tokens addObject:tmpToken];
+    }
     
     // Create Player2's tokens
     NSArray *player2Nodes = [[NSArray alloc] initWithObjects:@"F1", @"F2", @"F3", @"F4", @"G1", @"G2", @"G3", @"G4", @"H1", @"H2", @"H3", @"H4", nil];
     
-    
+    for(NSString *item in player2Nodes) {
+        tmpToken = [[Token alloc] initWithFrame:[[nodes objectForKey:item] getView].frame forPlayer:2];
+        [tmpToken setCurrentBoardNode:item];
+        [[nodes objectForKey:item] setCurrentToken:tmpToken];
+        [boardView addSubview:[tmpToken getView]];
+        
+        [player2Tokens addObject:tmpToken];
+    }
 }
 
 

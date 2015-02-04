@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Token.h"
+#import "BoardNodeView.h"
 
 @interface BoardNode : NSObject {
     
@@ -18,11 +19,11 @@
     
     Token *currentToken;
     
-    UIView *view;
+    BoardNodeView *view;
 }
 
 - (id)initWithFrame:(CGRect)frame;
-- (UIView*)getView;
+- (BoardNodeView*)getView;
 - (void)setP1A:(BoardNode *)node;
 - (void)setP1B:(BoardNode *)node;
 - (void)setP2A:(BoardNode *)node;

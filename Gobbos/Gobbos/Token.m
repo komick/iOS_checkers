@@ -13,6 +13,8 @@
 
 - (id)initWithFrame:(CGRect)frame forPlayer:(int)player {
     
+    currentBoardNode = nil;
+    
     owningPlayer = player;
     
     view = [[TokenView alloc] initWithFrame:CGRectMake(frame.origin.x+5, frame.origin.y+5, 30.0f, 30.0f)];
@@ -47,6 +49,23 @@
 - (TokenView *)getView {
     
     return view;
+}
+
+
+- (void)setCurrentBoardNode:(NSString *)node {
+    
+    currentBoardNode = node;
+}
+
+- (NSString *)getCurrentBoardNode {
+    
+    return currentBoardNode;
+}
+
+
+- (int)owningPlayer {
+    
+    return owningPlayer;
 }
 
 @end

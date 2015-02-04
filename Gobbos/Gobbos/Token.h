@@ -12,6 +12,7 @@
 @interface Token : NSObject {
     
     int owningPlayer;
+    NSString *currentBoardNode;
     
     TokenView *view;
     
@@ -19,5 +20,9 @@
 
 - (id)initWithFrame:(CGRect)frame forPlayer:(int)player;
 - (TokenView *)getView;
+
+- (int)owningPlayer;
+- (void)setCurrentBoardNode:(NSString *)node;
+- (NSString *)getCurrentBoardNode;
 
 @end

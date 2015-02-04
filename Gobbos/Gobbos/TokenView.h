@@ -10,9 +10,12 @@
 
 @interface TokenView : UIView {
     
+    NSNotificationCenter *nc;
+    NSMutableDictionary *data;
     CGRect oldFrame;
 }
 
 - (id)initWithFrame:(CGRect)frame;
+- (void)snapback;
 
 @end

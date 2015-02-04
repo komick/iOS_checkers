@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BoardNodeView : UIView
+@interface BoardNodeView : UIView {
+    
+    NSString *nodeName;
+}
+
+- (void)setNodeName:(NSString *)node;
+- (NSString *)getNodeName;
 
 @end

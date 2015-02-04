@@ -18,4 +18,17 @@
 }
 */
 
+
+- (void)setNodeName:(NSString *)node {
+    
+    nodeName = node;
+}
+
+
+- (NSString *)getNodeName {
+    
+    return nodeName;
+}
+
+
 @end

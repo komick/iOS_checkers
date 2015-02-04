@@ -21,6 +21,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    nc = [NSNotificationCenter defaultCenter];
+    
+    [nc addObserver:self
+           selector:@selector(validateTokenMove:)
+               name:@"validateTokenMove"
+             object:nil];
+    
     board = [[Board alloc] initWithView:boardView];
 }
 
@@ -43,6 +50,23 @@
 - (IBAction)startNewGame:(id)sender {
     
     NSLog(@"Start New Game");
+}
+
+
+- (void)validateTokenMove:(NSNotification *)note {
+    
+    [[[note object] objectForKey:@"tokenView"] snapback];
+    
+    
+    NSLog(@"validateTokenMove: %@ -> %@ :: Player %d", [[[note object] objectForKey:@"originalBoardNodeView"] getNodeName], [[[note object] objectForKey:@"targetBoardNodeView"] getNodeName], 1);
+}
+
+
+- (IBAction)forceAIMove:(id)sender {
+    
+    //for () {
+        
+    //}
 }
 
 

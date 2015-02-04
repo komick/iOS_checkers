@@ -13,7 +13,7 @@
 
 - (id)initWithFrame:(CGRect)frame {
     
-    view = [[UIView alloc]initWithFrame:frame];
+    view = [[BoardNodeView alloc]initWithFrame:frame];
     view.backgroundColor = [UIColor brownColor];
     
     return self;

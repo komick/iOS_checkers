@@ -15,7 +15,7 @@
     
     owningPlayer = player;
     
-    view = [[TokenView alloc] initWithFrame:frame];
+    view = [[TokenView alloc] initWithFrame:CGRectMake(frame.origin.x+5, frame.origin.y+5, 30.0f, 30.0f)];
     
     // Set up the shape of the circle
     int radius = 15;
@@ -25,7 +25,7 @@
     circle.path = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0.0f, 0.0f, 2.0*radius, 2.0*radius)
                                              cornerRadius:radius].CGPath;
     
-    circle.position = CGPointMake(5.0f,5.0f);
+    circle.position = CGPointMake(0.0f,0.0f);
     
     // Configure the apperence of the circle
     if (owningPlayer == 1) {

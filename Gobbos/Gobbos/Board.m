@@ -154,7 +154,7 @@
     }
     
     // Create Player2's tokens
-    NSArray *player2Nodes = [[NSArray alloc] initWithObjects:@"F1", @"F2", @"F3", @"F4", @"G1", @"G2", @"G3", @"G4", @"H1", @"H2", @"H3", @"H4", @"D3",nil];
+    NSArray *player2Nodes = [[NSArray alloc] initWithObjects:@"F1", @"F2", @"F3", @"F4", @"G1", @"G2", @"G3", @"G4", @"H1", @"H2", @"H3", @"H4", @"D3", @"D2", nil];
     
     for(NSString *item in player2Nodes) {
         tmpToken = [[Token alloc] initWithFrame:[[nodes objectForKey:item] getView].frame forPlayer:2];
@@ -183,6 +183,8 @@
     
     BoardNode *endNode = [nodes objectForKey:[[[note object] objectForKey:@"targetBoardNodeView"] getNodeName]];
     
+    BoardNode *nodeToClear = nil;
+    
     // Verify player is moving a token belonging to them
     if ([[startNode getToken] owningPlayer] == 1) {
     
@@ -194,6 +196,22 @@
         else {
             // Determine if this is a valid jump
             if ([self isValidJumpFrom:startNode toNode:endNode forPlayer:1]) {
+                
+                if ([[[startNode getP1A] getP1A] isEqual:endNode] && [endNode isOpenSquare]) {
+                    if (![[startNode getP1A] isOpenSquare] && [[[startNode getP1A] getToken] owningPlayer] != 1) {
+                        nodeToClear = [startNode getP1A];
+                        NSLog(@"P1A is a jump");
+                        valid = YES;
+                    }
+                }
+                else if ([[[startNode getP1B] getP1B] isEqual:endNode] && [endNode isOpenSquare]) {
+                    if (![[startNode getP1B] isOpenSquare] && [[[startNode getP1B] getToken] owningPlayer] != 1) {
+                        nodeToClear = [startNode getP1B];
+                        NSLog(@"P1B is a jump");
+                        valid = YES;
+                    }
+                }
+                
                 valid = YES;
                 NSLog(@"Winner winner jumping dinner!");
             }
@@ -202,7 +220,7 @@
     }
     
     if (valid) {
-        [self moveTokenFrom:startNode toNode:endNode clearingNode:nil];
+        [self moveTokenFrom:startNode toNode:endNode clearingNode:nodeToClear];
     }
     else {
         [[[note object] objectForKey:@"tokenView"] snapback];
@@ -300,7 +318,12 @@
     [start setCurrentToken:nil];
     
     // Clear opponent's token from node if applicable
-    
+    if (clear != nil) {
+        [[[clear getToken] getView] removeFromSuperview];
+        [player2Tokens removeObject:[clear getToken]];
+        NSLog(@"Player has %lu tokens left", (unsigned long)[player2Tokens count]);
+        [clear setCurrentToken:nil];
+    }
     
 }
 

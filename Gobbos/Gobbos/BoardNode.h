@@ -33,6 +33,7 @@
 - (BoardNode *)getP2A;
 - (BoardNode *)getP2B;
 - (void)setCurrentToken:(Token *)token;
+- (Token *)getToken;
 - (bool)isOpenSquare;
 - (bool)isPlayer1Home;
 - (bool)isPlayer2Home;

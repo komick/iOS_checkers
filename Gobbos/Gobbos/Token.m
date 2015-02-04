@@ -51,6 +51,11 @@
     return view;
 }
 
+- (void)snapToFrame:(CGRect)frame {
+    
+    [view setFrame:CGRectMake(frame.origin.x+5, frame.origin.y+5, 30.0f, 30.0f)];
+}
+
 
 - (void)setCurrentBoardNode:(NSString *)node {
     

@@ -78,6 +78,12 @@
 }
 
 
+- (Token *)getToken {
+    
+    return currentToken;
+}
+
+
 - (bool)isOpenSquare {
     
     return currentToken == nil;

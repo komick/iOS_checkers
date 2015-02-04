@@ -15,14 +15,12 @@
 
 @interface BoardViewController : UIViewController {
     
-    NSNotificationCenter *nc;
     Board *board;
 }
 
 @property (assign) IBOutlet BoardView *boardView;
 
 - (IBAction)startNewGame:(id)sender;
-- (void)validateTokenMove:(NSNotification *)note;
 - (IBAction)forceAIMove:(id)sender;
 
 @end

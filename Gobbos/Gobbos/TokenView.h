@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BoardNodeView.h"
 
 @interface TokenView : UIView {
     

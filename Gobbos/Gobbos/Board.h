@@ -12,6 +12,8 @@
 
 @interface Board : NSObject {
     
+    NSNotificationCenter *nc;
+    
     NSDictionary *nodes;
     NSMutableArray *player1Tokens;
     NSMutableArray *player2Tokens;
@@ -24,5 +26,10 @@
 - (void)linkBoardNodes;
 - (void)initTokens;
 - (void)setupBoard;
+
+- (void)validateTokenMove:(NSNotification *)note;
+- (bool)isValidMoveFrom:(BoardNode *)start toNode:(BoardNode *)end forPlayer:(int)player;
+- (bool)isValidJumpFrom:(BoardNode *)start toNode:(BoardNode *)end forPlayer:(int)player;
+- (void)moveTokenFrom:(BoardNode *)start toNode:(BoardNode *)end clearingNode:(BoardNode *)clear;
 
 @end

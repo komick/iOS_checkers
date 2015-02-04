@@ -58,7 +58,7 @@
         }
     }
     
-    NSLog(@"TokenView - touchesBegan()");
+    //NSLog(@"TokenView - touchesBegan()");
 }
 
 
@@ -75,18 +75,19 @@
     myFrame.origin.y += deltaY;
     [self setFrame:myFrame];
     
-    NSLog(@"TokenView - touchesMoved()");
+    //NSLog(@"TokenView - touchesMoved()");
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
 
     bool safe = NO;
     
-    CGPoint location = [[touches anyObject] locationInView:self];
-    CGRect fingerRect = CGRectMake(location.x-5, location.y-5, 10, 10);
+    //CGPoint location = [[touches anyObject] locationInView:self];
+    //CGRect fingerRect = CGRectMake(location.x-5, location.y-5, 10, 10);
     
     for(UIView *view in self.superview.subviews){
-        if (view != self) {
+        //NSLog(@"Class: %@", NSStringFromClass([view class]));
+        if (view != self && [view isKindOfClass:[BoardNodeView class]]) {
             CGRect subviewFrame = view.frame;
             
             if(CGRectIntersectsRect(self.frame, subviewFrame)){
@@ -107,13 +108,13 @@
         [nc postNotificationName:@"validateTokenMove" object:data];
     }
     
-    NSLog(@"TokenView - touchesEnded()");
+    //NSLog(@"TokenView - touchesEnded()");
 }
 
 
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
     
-    NSLog(@"TokenView - touchesCancelled()");
+    //NSLog(@"TokenView - touchesCancelled()");
 }
 
 

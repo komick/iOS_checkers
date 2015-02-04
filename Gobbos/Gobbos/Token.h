@@ -20,6 +20,7 @@
 
 - (id)initWithFrame:(CGRect)frame forPlayer:(int)player;
 - (TokenView *)getView;
+- (void)snapToFrame:(CGRect)frame;
 
 - (int)owningPlayer;
 - (void)setCurrentBoardNode:(NSString *)node;

@@ -25,6 +25,8 @@
 @property (nonatomic, retain) IBOutlet UILabel *p2Score;
 @property (nonatomic, retain) IBOutlet UILabel *p1Go;
 @property (nonatomic, retain) IBOutlet UILabel *p2Go;
+@property (nonatomic, retain) IBOutlet UILabel *won;
+@property (nonatomic, retain) IBOutlet UILabel *lost;
 
 
 - (void)showPlayer1Go:(NSNotification *)note;

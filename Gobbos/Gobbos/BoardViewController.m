@@ -20,6 +20,8 @@
 @synthesize p2Score;
 @synthesize p1Go;
 @synthesize p2Go;
+@synthesize won;
+@synthesize lost;
 
 
 - (void)viewDidLoad {
@@ -58,6 +60,16 @@
                name:@"setPlayer2Score"
              object:nil];
     
+    [nc addObserver:self
+           selector:@selector(showWon:)
+               name:@"showWon"
+             object:nil];
+    
+    [nc addObserver:self
+           selector:@selector(showLost:)
+               name:@"showLost"
+             object:nil];
+    
     board = [[Board alloc] initWithView:boardView];
 }
 
@@ -78,32 +90,42 @@
 
 
 - (void)showPlayer1Go:(NSNotification *)note {
-    
+    [p1Go setHidden:NO];
 }
 
 
 - (void)hidePlayer1Go:(NSNotification *)note {
-    
+    [p1Go setHidden:YES];
 }
 
 
 - (void)showPlayer2Go:(NSNotification *)note {
-    
+    [p2Go setHidden:NO];
 }
 
 
 - (void)hidePlayer2Go:(NSNotification *)note {
-    
+    [p2Go setHidden:YES];
 }
 
 
 - (void)setPlayer1Score:(NSNotification *)note {
-    
+    p1Score.text = [note object];
 }
 
 
 - (void)setPlayer2Score:(NSNotification *)note {
-    
+    p2Score.text = [note object];
+}
+
+
+- (void)showWon:(NSNotification *)note {
+    [won setHidden:NO];
+}
+
+
+- (void)ShowLost:(NSNotification *)note {
+    [lost setHidden:NO];
 }
 
 

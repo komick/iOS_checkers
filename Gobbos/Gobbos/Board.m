@@ -37,6 +37,9 @@
     
     currentPlayersTurn = 1;
     
+    [nc postNotificationName:@"showPlayer1Go" object:nil];
+    [nc postNotificationName:@"hidePlayer2Go" object:nil];
+    
     return self;
 }
 
@@ -225,6 +228,8 @@
         if (valid) {
             [self moveTokenFrom:startNode toNode:endNode clearingNode:nodeToClear];
             currentPlayersTurn = 2;
+            [nc postNotificationName:@"showPlayer2Go" object:nil];
+            [nc postNotificationName:@"hidePlayer1Go" object:nil];
             [self findValidAIMove];
         }
         else {
@@ -333,10 +338,12 @@
         if ([[clear getToken] owningPlayer] == 1) {
             [player1Tokens removeObject:[clear getToken]];
             NSLog(@"Player 1 has %lu tokens left", (unsigned long)[player1Tokens count]);
+            [nc postNotificationName:@"setPlayer1Score" object:[NSString stringWithFormat:@"%lu", (unsigned long)[player1Tokens count]]];
         }
         else {
             [player2Tokens removeObject:[clear getToken]];
             NSLog(@"Player 2 has %lu tokens left", (unsigned long)[player2Tokens count]);
+            [nc postNotificationName:@"setPlayer2Score" object:[NSString stringWithFormat:@"%lu", (unsigned long)[player2Tokens count]]];
         }
         [clear setCurrentToken:nil];
     }
@@ -349,6 +356,7 @@
     bool validMoveFound = NO;
     
     for (Token *p2t in player2Tokens) {
+        
         // Check all tokens for valid jump
         if (!validMoveFound && [self isValidJumpFrom:[nodes objectForKey:[p2t getCurrentBoardNode]] toNode:[[[nodes objectForKey:[p2t getCurrentBoardNode]] getP2A] getP2A] forPlayer:2]) {
             
@@ -370,8 +378,8 @@
     
     if (!validMoveFound) {
         for (Token *p2t in player2Tokens) {
-            // If no jump available, check for valid moves
             
+            // If no jump available, check for valid moves
             if (!validMoveFound && [self isValidMoveFrom:[nodes objectForKey:[p2t getCurrentBoardNode]] toNode:[[nodes objectForKey:[p2t getCurrentBoardNode]] getP2A] forPlayer:2]) {  // Is there a valid move along P2A
                 
                 [self moveTokenFrom:[nodes objectForKey:[p2t getCurrentBoardNode]] toNode:[[nodes objectForKey:[p2t getCurrentBoardNode]] getP2A] clearingNode:nil];
@@ -393,10 +401,15 @@
     
     if (validMoveFound) {
         currentPlayersTurn = 1;
+        [nc postNotificationName:@"showPlayer1Go" object:nil];
+        [nc postNotificationName:@"hidePlayer2Go" object:nil];
         NSLog(@"Player 1's turn");
     }
     else {
         NSLog(@"Player 2 unable to move");
+        [nc postNotificationName:@"hidePlayer1Go" object:nil];
+        [nc postNotificationName:@"hidePlayer2Go" object:nil];
+        [nc postNotificationName:@"showWon" object:nil];
     }
     
 }

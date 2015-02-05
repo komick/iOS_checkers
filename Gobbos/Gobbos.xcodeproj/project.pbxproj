@@ -23,6 +23,8 @@
 		CB9C38181A7DC65000BC27E8 /* BoardNode.m in Sources */ = {isa = PBXBuildFile; fileRef = CB9C38171A7DC65000BC27E8 /* BoardNode.m */; };
 		CB9C381B1A7DC9A900BC27E8 /* Token.m in Sources */ = {isa = PBXBuildFile; fileRef = CB9C381A1A7DC9A900BC27E8 /* Token.m */; };
 		CB9C381E1A81FA6700BC27E8 /* BoardNodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB9C381D1A81FA6700BC27E8 /* BoardNodeView.m */; };
+		CB9C38201A8346F700BC27E8 /* the_goblin_king_by_brucewhite-d5ns0rz.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CB9C381F1A8346F700BC27E8 /* the_goblin_king_by_brucewhite-d5ns0rz.jpg */; };
+		CB9C38221A8348EF00BC27E8 /* Goblin_Scribe.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CB9C38211A8348EF00BC27E8 /* Goblin_Scribe.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +67,8 @@
 		CB9C381A1A7DC9A900BC27E8 /* Token.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Token.m; sourceTree = "<group>"; };
 		CB9C381C1A81FA6700BC27E8 /* BoardNodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoardNodeView.h; sourceTree = "<group>"; };
 		CB9C381D1A81FA6700BC27E8 /* BoardNodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoardNodeView.m; sourceTree = "<group>"; };
+		CB9C381F1A8346F700BC27E8 /* the_goblin_king_by_brucewhite-d5ns0rz.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "the_goblin_king_by_brucewhite-d5ns0rz.jpg"; sourceTree = "<group>"; };
+		CB9C38211A8348EF00BC27E8 /* Goblin_Scribe.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Goblin_Scribe.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +141,8 @@
 		CB9C37DF1A7DA08200BC27E8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				CB9C38211A8348EF00BC27E8 /* Goblin_Scribe.jpg */,
+				CB9C381F1A8346F700BC27E8 /* the_goblin_king_by_brucewhite-d5ns0rz.jpg */,
 				CB9C37E01A7DA08200BC27E8 /* Info.plist */,
 				CB9C37E11A7DA08200BC27E8 /* main.m */,
 			);
@@ -242,8 +248,10 @@
 			files = (
 				CB9C37EE1A7DA08200BC27E8 /* Main.storyboard in Resources */,
 				CB9C37F31A7DA08200BC27E8 /* LaunchScreen.xib in Resources */,
+				CB9C38221A8348EF00BC27E8 /* Goblin_Scribe.jpg in Resources */,
 				CB9C37F01A7DA08200BC27E8 /* Images.xcassets in Resources */,
 				CB9C380C1A7DC4B100BC27E8 /* BoardViewController.xib in Resources */,
+				CB9C38201A8346F700BC27E8 /* the_goblin_king_by_brucewhite-d5ns0rz.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

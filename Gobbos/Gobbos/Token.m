@@ -31,12 +31,12 @@
     
     // Configure the apperence of the circle
     if (owningPlayer == 1) {
-        circle.fillColor = [UIColor purpleColor].CGColor;
+        circle.fillColor = [UIColor redColor].CGColor;
         circle.strokeColor = [UIColor yellowColor].CGColor;
     }
     else {
-        circle.fillColor = [UIColor redColor].CGColor;
-        circle.strokeColor = [UIColor yellowColor].CGColor;
+        circle.fillColor = [UIColor greenColor].CGColor;
+        circle.strokeColor = [UIColor blackColor].CGColor;
     }
     circle.lineWidth = 2;
     

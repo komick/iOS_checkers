@@ -35,6 +35,8 @@
     // Setup board for first game
     [self setupBoard];
     
+    currentPlayersTurn = 1;
+    
     return self;
 }
 
@@ -154,7 +156,7 @@
     }
     
     // Create Player2's tokens
-    NSArray *player2Nodes = [[NSArray alloc] initWithObjects:@"F1", @"F2", @"F3", @"F4", @"G1", @"G2", @"G3", @"G4", @"H1", @"H2", @"H3", @"H4", @"D3", @"D2", nil];
+    NSArray *player2Nodes = [[NSArray alloc] initWithObjects:@"F1", @"F2", @"F3", @"F4", @"G1", @"G2", @"G3", @"G4", @"H1", @"H2", @"H3", @"H4", nil];
     
     for(NSString *item in player2Nodes) {
         tmpToken = [[Token alloc] initWithFrame:[[nodes objectForKey:item] getView].frame forPlayer:2];
@@ -177,56 +179,63 @@
     
     NSLog(@"validateTokenMove: %@ -> %@ :: Player %d", [[[note object] objectForKey:@"originalBoardNodeView"] getNodeName], [[[note object] objectForKey:@"targetBoardNodeView"] getNodeName], 1);
     
-    bool valid = NO;
-    
-    BoardNode *startNode = [nodes objectForKey:[[[note object] objectForKey:@"originalBoardNodeView"] getNodeName]];
-    
-    BoardNode *endNode = [nodes objectForKey:[[[note object] objectForKey:@"targetBoardNodeView"] getNodeName]];
-    
-    BoardNode *nodeToClear = nil;
-    
-    // Verify player is moving a token belonging to them
-    if ([[startNode getToken] owningPlayer] == 1) {
-    
-        // Determine if this is a valid move to an adjacent square
-        if ([self isValidMoveFrom:startNode toNode:endNode forPlayer:1]) {
-            valid = YES;
-            NSLog(@"Winner winner chicken dinner!");
+    if (currentPlayersTurn == 1) {
+        bool valid = NO;
+        
+        BoardNode *startNode = [nodes objectForKey:[[[note object] objectForKey:@"originalBoardNodeView"] getNodeName]];
+        
+        BoardNode *endNode = [nodes objectForKey:[[[note object] objectForKey:@"targetBoardNodeView"] getNodeName]];
+        
+        BoardNode *nodeToClear = nil;
+        
+        // Verify player is moving a token belonging to them
+        if ([[startNode getToken] owningPlayer] == 1) {
+        
+            // Determine if this is a valid move to an adjacent square
+            if ([self isValidMoveFrom:startNode toNode:endNode forPlayer:1]) {
+                valid = YES;
+                NSLog(@"Winner winner chicken dinner!");
+            }
+            else {
+                // Determine if this is a valid jump
+                if ([self isValidJumpFrom:startNode toNode:endNode forPlayer:1]) {
+                    
+                    if ([[[startNode getP1A] getP1A] isEqual:endNode] && [endNode isOpenSquare]) {
+                        if (![[startNode getP1A] isOpenSquare] && [[[startNode getP1A] getToken] owningPlayer] != 1) {
+                            nodeToClear = [startNode getP1A];
+                            NSLog(@"Player 1 jumps along P1A");
+                            valid = YES;
+                        }
+                    }
+                    else if ([[[startNode getP1B] getP1B] isEqual:endNode] && [endNode isOpenSquare]) {
+                        if (![[startNode getP1B] isOpenSquare] && [[[startNode getP1B] getToken] owningPlayer] != 1) {
+                            nodeToClear = [startNode getP1B];
+                            NSLog(@"Player 1 jumps along P1B");
+                            valid = YES;
+                        }
+                    }
+                    
+                    valid = YES;
+                    NSLog(@"Winner winner jumping dinner!");
+                }
+                
+            }
+        }
+        
+        if (valid) {
+            [self moveTokenFrom:startNode toNode:endNode clearingNode:nodeToClear];
+            currentPlayersTurn = 2;
+            [self findValidAIMove];
         }
         else {
-            // Determine if this is a valid jump
-            if ([self isValidJumpFrom:startNode toNode:endNode forPlayer:1]) {
-                
-                if ([[[startNode getP1A] getP1A] isEqual:endNode] && [endNode isOpenSquare]) {
-                    if (![[startNode getP1A] isOpenSquare] && [[[startNode getP1A] getToken] owningPlayer] != 1) {
-                        nodeToClear = [startNode getP1A];
-                        NSLog(@"P1A is a jump");
-                        valid = YES;
-                    }
-                }
-                else if ([[[startNode getP1B] getP1B] isEqual:endNode] && [endNode isOpenSquare]) {
-                    if (![[startNode getP1B] isOpenSquare] && [[[startNode getP1B] getToken] owningPlayer] != 1) {
-                        nodeToClear = [startNode getP1B];
-                        NSLog(@"P1B is a jump");
-                        valid = YES;
-                    }
-                }
-                
-                valid = YES;
-                NSLog(@"Winner winner jumping dinner!");
-            }
-            
+            [[[note object] objectForKey:@"tokenView"] snapback];
         }
-    }
-    
-    if (valid) {
-        [self moveTokenFrom:startNode toNode:endNode clearingNode:nodeToClear];
+        
     }
     else {
+        // Not Player 1's turn, undo move
         [[[note object] objectForKey:@"tokenView"] snapback];
     }
-    
-    
 }
 
 
@@ -244,7 +253,7 @@
             valid = YES;
         }
         else {
-            NSLog(@"Move is not valid!");
+            NSLog(@"P1 move is not valid!");
         }
     }
     else {
@@ -257,7 +266,7 @@
             valid = YES;
         }
         else {
-            NSLog(@"Move is not valid!");
+            NSLog(@"P2 move is not valid!");
         }
     }
     
@@ -272,13 +281,13 @@
     if (player == 1) {
         if ([[[start getP1A] getP1A] isEqual:end] && [end isOpenSquare]) {
             if (![[start getP1A] isOpenSquare] && [[[start getP1A] getToken] owningPlayer] != player) {
-                NSLog(@"P1A is a jump");
+                NSLog(@"P1A is a valid jump");
                 valid = YES;
             }
         }
         else if ([[[start getP1B] getP1B] isEqual:end] && [end isOpenSquare]) {
             if (![[start getP1B] isOpenSquare] && [[[start getP1B] getToken] owningPlayer] != player) {
-                NSLog(@"P1B is a jump");
+                NSLog(@"P1B is a valid jump");
                 valid = YES;
             }
         }
@@ -312,6 +321,7 @@
     
     // Move token to new node
     [end setCurrentToken:[start getToken]];
+    [[start getToken] setCurrentBoardNode:[[end getView] getNodeName]];
     [[start getToken] snapToFrame:[end getView].frame];
     
     // Clear old node
@@ -320,12 +330,77 @@
     // Clear opponent's token from node if applicable
     if (clear != nil) {
         [[[clear getToken] getView] removeFromSuperview];
-        [player2Tokens removeObject:[clear getToken]];
-        NSLog(@"Player has %lu tokens left", (unsigned long)[player2Tokens count]);
+        if ([[clear getToken] owningPlayer] == 1) {
+            [player1Tokens removeObject:[clear getToken]];
+            NSLog(@"Player 1 has %lu tokens left", (unsigned long)[player1Tokens count]);
+        }
+        else {
+            [player2Tokens removeObject:[clear getToken]];
+            NSLog(@"Player 2 has %lu tokens left", (unsigned long)[player2Tokens count]);
+        }
         [clear setCurrentToken:nil];
     }
     
 }
+
+
+- (void)findValidAIMove {
+    
+    bool validMoveFound = NO;
+    
+    for (Token *p2t in player2Tokens) {
+        // Check all tokens for valid jump
+        if (!validMoveFound && [self isValidJumpFrom:[nodes objectForKey:[p2t getCurrentBoardNode]] toNode:[[[nodes objectForKey:[p2t getCurrentBoardNode]] getP2A] getP2A] forPlayer:2]) {
+            
+            [self moveTokenFrom:[nodes objectForKey:[p2t getCurrentBoardNode]] toNode:[[[nodes objectForKey:[p2t getCurrentBoardNode]] getP2A] getP2A] clearingNode:[[nodes objectForKey:[p2t getCurrentBoardNode]] getP2A]];
+            
+            validMoveFound = YES;
+            NSLog(@"Player 2 jumps along P2A");
+        }
+        else if (!validMoveFound && [self isValidJumpFrom:[nodes objectForKey:[p2t getCurrentBoardNode]] toNode:[[[nodes objectForKey:[p2t getCurrentBoardNode]] getP2B] getP2B] forPlayer:2]) {
+            
+            [self moveTokenFrom:[nodes objectForKey:[p2t getCurrentBoardNode]] toNode:[[[nodes objectForKey:[p2t getCurrentBoardNode]] getP2B] getP2B] clearingNode:[[nodes objectForKey:[p2t getCurrentBoardNode]] getP2B]];
+            
+            validMoveFound = YES;
+            NSLog(@"Player 2 jumps along P2B");
+        }
+        
+        if (validMoveFound) break;
+    }
+    
+    if (!validMoveFound) {
+        for (Token *p2t in player2Tokens) {
+            // If no jump available, check for valid moves
+            
+            if (!validMoveFound && [self isValidMoveFrom:[nodes objectForKey:[p2t getCurrentBoardNode]] toNode:[[nodes objectForKey:[p2t getCurrentBoardNode]] getP2A] forPlayer:2]) {  // Is there a valid move along P2A
+                
+                [self moveTokenFrom:[nodes objectForKey:[p2t getCurrentBoardNode]] toNode:[[nodes objectForKey:[p2t getCurrentBoardNode]] getP2A] clearingNode:nil];
+                
+                validMoveFound = YES;
+                NSLog(@"Player 2 moves along P2A");
+            }
+            else if (!validMoveFound && [self isValidMoveFrom:[nodes objectForKey:[p2t getCurrentBoardNode]] toNode:[[nodes objectForKey:[p2t getCurrentBoardNode]] getP2B] forPlayer:2]) {// Is there a valid move along P2B
+                
+                [self moveTokenFrom:[nodes objectForKey:[p2t getCurrentBoardNode]] toNode:[[nodes objectForKey:[p2t getCurrentBoardNode]] getP2B] clearingNode:nil];
+                
+                validMoveFound = YES;
+                NSLog(@"Player 2 moves along P2B");
+            }
+            
+            if (validMoveFound) break;
+        }
+    }
+    
+    if (validMoveFound) {
+        currentPlayersTurn = 1;
+        NSLog(@"Player 1's turn");
+    }
+    else {
+        NSLog(@"Player 2 unable to move");
+    }
+    
+}
+
 
 
 @end

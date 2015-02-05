@@ -19,6 +19,8 @@
     NSMutableArray *player2Tokens;
     
     BoardView *boardView;
+    
+    int currentPlayersTurn;
 }
 
 - (id)initWithView:(BoardView *)v_board;
@@ -31,5 +33,8 @@
 - (bool)isValidMoveFrom:(BoardNode *)start toNode:(BoardNode *)end forPlayer:(int)player;
 - (bool)isValidJumpFrom:(BoardNode *)start toNode:(BoardNode *)end forPlayer:(int)player;
 - (void)moveTokenFrom:(BoardNode *)start toNode:(BoardNode *)end clearingNode:(BoardNode *)clear;
+
+- (void)findValidAIMove;
+
 
 @end

@@ -82,9 +82,6 @@
 
     bool safe = NO;
     
-    //CGPoint location = [[touches anyObject] locationInView:self];
-    //CGRect fingerRect = CGRectMake(location.x-5, location.y-5, 10, 10);
-    
     for(UIView *view in self.superview.subviews){
         //NSLog(@"Class: %@", NSStringFromClass([view class]));
         if (view != self && [view isKindOfClass:[BoardNodeView class]]) {
